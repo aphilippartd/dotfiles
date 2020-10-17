@@ -5,3 +5,27 @@ alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/download
 
 # Quickly serve the current directory as HTTP
 alias serve='ruby -run -e httpd . -p 8000'  # Or python -m SimpleHTTPServer :)
+
+# Git aliases
+alias gpo="git push origin"
+alias gpom="git pull origin master"
+alias gcop="git checkout production"
+
+gps() {
+  git push origin $(git branch | grep \* | cut -d ' ' -f2-)
+}
+
+gpl() {
+  git pull origin $(git branch | grep \* | cut -d ' ' -f2-)
+}
+
+# Password encryption
+alias encrypt_my_password="python -c 'from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.using(rounds=5000).hash(getpass.getpass())'"
+
+# Hack the hack
+alias aliases="nano ~/.aliases"
+
+# Rails project helpers
+alias cdsmovin="cd ~/code/aphilippartd/smovin/hera"
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code ."
+alias smovinproductionlogs="scp deploy@smovin-production-alpha:/home/deploy/smovinApp/current/log/production.log /Users/aphilippartd/code/aphilippartd/smovin/application/log/production.log && cat /Users/aphilippartd/code/aphilippartd/smovin/application/log/production.log"
